@@ -1,0 +1,23 @@
+const { Client, GatewayIntentBits } = require("discord.js");
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
+});
+
+client.once("ready", () => {
+  console.log(`✅ Bot online as ${client.user.tag}`);
+});
+
+client.on("messageCreate", (message) => {
+  if (message.author.bot) return;
+
+  if (message.content === "!ping") {
+    message.reply("🏓 Pong! Bot is online 24/7");
+  }
+});
+
+client.login(process.env.TOKEN);MTQ3OTU0NzA3MDk1NTEyNjkwNQ.GzRtqc.S1XH7RJ5Ln3DCXMpGXZp4VLA3Lons1t9zrKPhs
